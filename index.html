@@ -84,11 +84,6 @@
             transition: transform 0.2s, background 0.3s;
         }
         button[type="submit"]:hover { background: #5b4cc4; transform: translateY(-2px); }
-
-        /* Class to hide the dropdown sections initially */
-        .hidden-section {
-            display: none;
-        }
     </style>
 </head>
 <body>
@@ -97,9 +92,8 @@
     <h1>Baby Prediction Poll! 👶</h1>
     <p>Cast your vote and help us guess the gender and names!</p>
 
-    <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSckfnJTUBhkDYrLKBVfUFQ3ersx7TqA3jUV70iPFL6kemRskg" method="POST" target="_self">
+    <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSckfnJTUBhkDYrLKBVfUFQ3ersx7TqA3jUV70iPFL6kemRskg/formResponse" method="POST" target="_self">
         
-        <!-- Gender Guess (Mandatory) -->
         <div class="section">
             <label>What's your guess?</label>
             <div class="gender-options">
@@ -114,14 +108,7 @@
             </div>
         </div>
 
-        <!-- Text Suggestion Field (Moved First) -->
         <div class="section">
-            <label for="suggestion">Have another name suggestion?</label>
-            <input type="text" name="entry.730342018" id="suggestion" placeholder="Type your idea here..." required>
-        </div>
-
-        <!-- Boy Name Selection (Hidden initially) -->
-        <div class="section hidden-section" id="boy-section">
             <label for="boy-name">If it's a Boy, which name do you prefer?</label>
             <select name="entry.1945235515" id="boy-name" required>
                 <option value="" disabled selected>Select a boy name</option>
@@ -131,8 +118,7 @@
             </select>
         </div>
 
-        <!-- Girl Name Selection (Hidden initially) -->
-        <div class="section hidden-section" id="girl-section">
+        <div class="section">
             <label for="girl-name">If it's a Girl, which name do you prefer?</label>
             <select name="entry.820457992" id="girl-name" required>
                 <option value="" disabled selected>Select a girl name</option>
@@ -142,28 +128,14 @@
             </select>
         </div>
 
+        <div class="section">
+            <label for="suggestion">Have another name suggestion?</label>
+            <input type="text" name="entry.730342018" id="suggestion" placeholder="Type your idea here..." required>
+        </div>
+
         <button type="submit">Submit My Guess! ✨</button>
     </form>
 </div>
-
-<script>
-    const suggestionInput = document.getElementById('suggestion');
-    const boySection = document.getElementById('boy-section');
-    const girlSection = document.getElementById('girl-section');
-
-    // Listen to what the user types in the suggestion box
-    suggestionInput.addEventListener('input', function() {
-        // If they have typed at least 1 character, show the dropdowns
-        if (this.value.trim().length > 0) {
-            boySection.style.display = 'block';
-            girlSection.style.display = 'block';
-        } else {
-            // Hide them again if they clear the text field
-            boySection.style.display = 'none';
-            girlSection.style.display = 'none';
-        }
-    });
-</script>
 
 </body>
 </html>
