@@ -9,10 +9,15 @@
             --pink: #ffb6c1;
             --blue: #a8d8ea;
             --text: #4a4a4a;
+            --purple: #6c5ce7;
         }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #fef6fb 0%, #e6f4f8 100%);
+            /* A gorgeous 3-point pastel gradient layered with a subtle repeating milk bottle and diaper pattern */
+            background: 
+                linear-gradient(145deg, rgba(255, 243, 245, 0.93) 0%, rgba(247, 245, 255, 0.93) 50%, rgba(232, 247, 252, 0.93) 100%),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><text x="20" y="40" font-size="16" opacity="0.12">🍼</text><text x="70" y="80" font-size="16" opacity="0.12">🩲</text></svg>');
+            background-repeat: repeat;
             color: var(--text);
             display: flex;
             justify-content: center;
@@ -23,65 +28,100 @@
         }
         .container {
             background: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            max-width: 500px;
+            padding: 40px;
+            border-radius: 24px;
+            /* Soft, deep shadow to make the form beautifully float over the pattern */
+            box-shadow: 0 20px 40px rgba(108, 92, 231, 0.06);
+            max-width: 520px;
             width: 100%;
             text-align: center;
+            box-sizing: border-box;
         }
-        h1 { margin-bottom: 5px; color: #6c5ce7; }
-        p { color: #888; margin-bottom: 30px; }
-        .section { margin-bottom: 25px; text-align: left; }
-        label { font-weight: bold; display: block; margin-bottom: 8px; }
+        h1 { 
+            margin-top: 0;
+            margin-bottom: 10px; 
+            color: var(--purple); 
+            font-size: 2.2rem;
+            letter-spacing: -0.5px;
+        }
+        p { 
+            color: #777; 
+            margin-bottom: 35px; 
+            font-size: 1.05rem;
+            line-height: 1.5;
+        }
+        .section { 
+            margin-bottom: 28px; 
+            text-align: left; 
+        }
+        label { 
+            font-weight: 600; 
+            display: block; 
+            margin-bottom: 10px; 
+            font-size: 0.95rem;
+            color: #333;
+        }
         
         /* Gender Selection Styling */
         .gender-options {
             display: flex;
-            gap: 15px;
+            gap: 16px;
+            margin-top: 5px;
         }
         .gender-btn {
             flex: 1;
-            padding: 15px;
-            border: 2px solid #ddd;
-            border-radius: 10px;
+            padding: 16px;
+            border: 2px solid #eaeaea;
+            border-radius: 12px;
             cursor: pointer;
             text-align: center;
             font-weight: bold;
-            transition: all 0.3s;
+            transition: all 0.25s ease;
+            font-size: 1rem;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
         }
-        .gender-btn.boy:hover { border-color: var(--blue); background: #f0f8ff; }
-        .gender-btn.girl:hover { border-color: var(--pink); background: #fff5f7; }
+        .gender-btn.boy:hover { border-color: var(--blue); background: #f7fcfe; }
+        .gender-btn.girl:hover { border-color: var(--pink); background: #fff9fa; }
         
         input[type="radio"] { display: none; }
-        input[type="radio"]:checked + .gender-btn.boy { background: var(--blue); border-color: #74b9ff; color: white; }
-        input[type="radio"]:checked + .gender-btn.girl { background: var(--pink); border-color: #ff7675; color: white; }
+        input[type="radio"]:checked + .gender-btn.boy { background: var(--blue); border-color: #8ecae6; color: white; }
+        input[type="radio"]:checked + .gender-btn.girl { background: var(--pink); border-color: #ff9aa2; color: white; }
 
         /* Inputs & Selects */
         select, input[type="text"] {
             width: 100%;
-            padding: 12px;
+            padding: 14px;
             border: 2px solid #eee;
-            border-radius: 10px;
+            border-radius: 12px;
             box-sizing: border-box;
-            font-size: 16px;
+            font-size: 15px;
             outline: none;
-            transition: border-color 0.3s;
+            transition: border-color 0.3s ease;
+            background-color: #fafafa;
+            color: var(--text);
         }
-        select:focus, input[type="text"]:focus { border-color: #6c5ce7; }
+        select:focus, input[type="text"]:focus { 
+            border-color: var(--purple); 
+            background-color: #fff;
+        }
         
         button[type="submit"] {
-            background: #6c5ce7;
+            background: var(--purple);
             color: white;
             border: none;
-            padding: 15px 30px;
+            padding: 16px 30px;
             font-size: 18px;
-            border-radius: 10px;
+            border-radius: 12px;
             cursor: pointer;
             width: 100%;
             font-weight: bold;
-            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
+            box-shadow: 0 6px 20px rgba(108, 92, 231, 0.25);
             transition: transform 0.2s, background 0.3s;
+            margin-top: 10px;
         }
         button[type="submit"]:hover { background: #5b4cc4; transform: translateY(-2px); }
     </style>
@@ -89,7 +129,7 @@
 <body>
 
 <div class="container">
-    <h1>Baby Prediction Poll! 👶🏽</h1>
+    <h1>Baby Prediction Poll! 👶🏻</h1>
     <p>Cast your vote and help us settle the family debates!</p>
 
     <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSckfnJTUBhkDYrLKBVfUFQ3ersx7TqA3jUV70iPFL6kemRskg/formResponse" method="POST" target="_self">
@@ -99,11 +139,11 @@
             <div class="gender-options">
                 <label style="flex:1;">
                     <input type="radio" name="entry.1062569499" value="Boy" required>
-                    <div class="gender-btn boy">💙 Team Boy</div>
+                    <div class="gender-btn boy">💙 Team Boy 👦🏻 🍼</div>
                 </label>
                 <label style="flex:1;">
                     <input type="radio" name="entry.1062569499" value="Girl" required>
-                    <div class="gender-btn girl">💖 Team Girl</div>
+                    <div class="gender-btn girl">💖 Team Girl 👧🏻 🍼</div>
                 </label>
             </div>
         </div>
@@ -111,7 +151,7 @@
         <div class="section">
             <label for="boy-name">If it's a boy, which name gets your vote?</label>
             <select name="entry.1945235515" id="boy-name" required>
-                <option value="" disabled selected>Select a name for the Chotu</option>
+                <option value="" disabled selected>Select a name for the Chotu...</option>
                 <option value="Ishan">Ishan</option>
                 <option value="Ashish">Ashish</option>
                 <option value="Ryaan">Ryaan</option>
@@ -121,7 +161,7 @@
         <div class="section">
             <label for="girl-name">If it's a girl, which name gets your vote?</label>
             <select name="entry.820457992" id="girl-name" required>
-                <option value="" disabled selected>Select a name for the Gudiya</option>
+                <option value="" disabled selected>Select a name for the Gudiya...</option>
                 <option value="Isha">Isha</option>
                 <option value="Prisha">Prisha</option>
                 <option value="Swara">Swara</option>
@@ -129,7 +169,7 @@
         </div>
 
         <div class="section">
-            <label for="boy-suggestion">Have another boy name in mind? (Before the elders decide one!)</label>
+            <label for="boy-suggestion">Have another boy name in mind? (Before the elders decide!)</label>
             <input type="text" name="entry.730342018" id="boy-suggestion" placeholder="Type your idea here..." required>
         </div>
 		
