@@ -3,7 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Baby Poll & Gender Reveal Guessing Game</title>
+    <title>Chotu vs Gudiya: Place Your Bets! 🎰🔮</title>
+    <!-- Import beautiful, rounded geometric fonts perfect for a baby poll -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --pink: #ffb6c1;
@@ -12,7 +17,8 @@
             --purple: #6c5ce7;
         }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 500;
             /* A gorgeous 3-point pastel gradient layered with a subtle repeating milk bottle and diaper pattern */
             background: 
                 linear-gradient(145deg, rgba(255, 243, 245, 0.93) 0%, rgba(247, 245, 255, 0.93) 50%, rgba(232, 247, 252, 0.93) 100%),
@@ -28,8 +34,8 @@
         }
         .container {
             background: white;
-            padding: 40px;
-            border-radius: 24px;
+            padding: 45px 40px;
+            border-radius: 28px;
             /* Soft, deep shadow to make the form beautifully float over the pattern */
             box-shadow: 0 20px 40px rgba(108, 92, 231, 0.06);
             max-width: 520px;
@@ -38,16 +44,18 @@
             box-sizing: border-box;
         }
         h1 { 
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
             margin-top: 0;
-            margin-bottom: 10px; 
+            margin-bottom: 12px; 
             color: var(--purple); 
-            font-size: 2.2rem;
+            font-size: 2.4rem;
             letter-spacing: -0.5px;
         }
         p { 
             color: #777; 
             margin-bottom: 35px; 
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             line-height: 1.5;
         }
         .section { 
@@ -55,10 +63,11 @@
             text-align: left; 
         }
         label { 
+            font-family: 'Fredoka', sans-serif;
             font-weight: 600; 
             display: block; 
             margin-bottom: 10px; 
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: #333;
         }
         
@@ -72,76 +81,83 @@
             flex: 1;
             padding: 16px;
             border: 2px solid #eaeaea;
-            border-radius: 12px;
+            border-radius: 16px;
             cursor: pointer;
             text-align: center;
-            font-weight: bold;
-            transition: all 0.25s ease;
-            font-size: 1rem;
+            font-weight: 700;
+            font-family: 'Fredoka', sans-serif;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 1.05rem;
             background: #fff;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 4px;
+            gap: 6px;
         }
-        .gender-btn.boy:hover { border-color: var(--blue); background: #f7fcfe; }
-        .gender-btn.girl:hover { border-color: var(--pink); background: #fff9fa; }
+        .gender-btn.boy:hover { border-color: var(--blue); background: #f7fcfe; transform: scale(1.02); }
+        .gender-btn.girl:hover { border-color: var(--pink); background: #fff9fa; transform: scale(1.02); }
         
         input[type="radio"] { display: none; }
-        input[type="radio"]:checked + .gender-btn.boy { background: var(--blue); border-color: #8ecae6; color: white; }
-        input[type="radio"]:checked + .gender-btn.girl { background: var(--pink); border-color: #ff9aa2; color: white; }
+        input[type="radio"]:checked + .gender-btn.boy { background: var(--blue); border-color: #8ecae6; color: white; transform: scale(1.02); }
+        input[type="radio"]:checked + .gender-btn.girl { background: var(--pink); border-color: #ff9aa2; color: white; transform: scale(1.02); }
 
         /* Inputs & Selects */
         select, input[type="text"] {
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
             width: 100%;
-            padding: 14px;
+            padding: 15px;
             border: 2px solid #eee;
-            border-radius: 12px;
+            border-radius: 14px;
             box-sizing: border-box;
             font-size: 15px;
             outline: none;
-            transition: border-color 0.3s ease;
+            transition: all 0.3s ease;
             background-color: #fafafa;
             color: var(--text);
         }
         select:focus, input[type="text"]:focus { 
             border-color: var(--purple); 
             background-color: #fff;
+            box-shadow: 0 0 0 4px rgba(108, 92, 231, 0.08);
         }
         
         button[type="submit"] {
+            font-family: 'Fredoka', sans-serif;
             background: var(--purple);
             color: white;
             border: none;
-            padding: 16px 30px;
-            font-size: 18px;
-            border-radius: 12px;
+            padding: 18px 30px;
+            font-size: 1.15rem;
+            border-radius: 16px;
             cursor: pointer;
             width: 100%;
-            font-weight: bold;
+            font-weight: 700;
             box-shadow: 0 6px 20px rgba(108, 92, 231, 0.25);
-            transition: transform 0.2s, background 0.3s;
+            transition: all 0.2s ease;
             margin-top: 10px;
         }
-        button[type="submit"]:hover { background: #5b4cc4; transform: translateY(-2px); }
+        button[type="submit"]:hover { background: #5b4cc4; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(108, 92, 231, 0.35); }
+        button[type="submit"]:active { transform: translateY(0); }
     </style>
 </head>
 <body>
 
 <div class="container">
     <h1>Baby Prediction Poll! 👶🏻</h1>
-    <p>Cast your vote and help us settle the family debates!</p>
+    <p>Cast your vote and help us settle the family debates! 📢💭</p>
 
     <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSckfnJTUBhkDYrLKBVfUFQ3ersx7TqA3jUV70iPFL6kemRskg/formResponse" method="POST" target="_self">
         
-        <!-- Voter Identity Field -->
+        <!-- Voter Identity Field (OPTIONAL) -->
         <div class="section">
             <label for="voter-name">Who is guessing? 📝</label>
-            <input type="text" name="entry.1344783608" id="voter-name" placeholder="Type your name here..." required>
+            <input type="text" name="entry.1344783608" id="voter-name" placeholder="Type your name here... (Optional)">
         </div>
 
+        <!-- Guess Field (REQUIRED) -->
         <div class="section">
-            <label>What is your final guess?</label>
+            <label>What is your final guess? 🔮✨</label>
             <div class="gender-options">
                 <label style="flex:1;">
                     <input type="radio" name="entry.1062569499" value="Boy" required>
@@ -154,37 +170,41 @@
             </div>
         </div>
 
+        <!-- Boy Name Field (REQUIRED) -->
         <div class="section">
-            <label for="boy-name">If it's a boy, which name gets your vote?</label>
+            <label for="boy-name">If it's a boy, which name gets your vote? 👑</label>
             <select name="entry.1945235515" id="boy-name" required>
                 <option value="" disabled selected>Select a name for the Chotu...</option>
-                <option value="Ishan">Ishan</option>
+                <option value="Reyansh">Reyansh</option>
                 <option value="Ashish">Ashish</option>
-                <option value="Ryaan">Ryaan</option>
+                <option value="Ishan">Ishan</option>
             </select>
         </div>
 
+        <!-- Girl Name Field (REQUIRED) -->
         <div class="section">
-            <label for="girl-name">If it's a girl, which name gets your vote?</label>
+            <label for="girl-name">If it's a girl, which name gets your vote? 🎀</label>
             <select name="entry.820457992" id="girl-name" required>
                 <option value="" disabled selected>Select a name for the Gudiya...</option>
-                <option value="Isha">Isha</option>
                 <option value="Prisha">Prisha</option>
-                <option value="Swara">Swara</option>
+                <option value="Ira">Ira</option>
+                <option value="Isha">Isha</option>
             </select>
         </div>
 
+        <!-- Boy Suggestion Field (REQUIRED) -->
         <div class="section">
-            <label for="boy-suggestion">Have another boy name in mind? (Before the elders decide!)</label>
-            <input type="text" name="entry.730342018" id="boy-suggestion" placeholder="Type your idea here...">
+            <label for="boy-suggestion">Have another boy name in mind? (Before the elders decide! 👴🏽)</label>
+            <input type="text" name="entry.730342018" id="boy-suggestion" placeholder="Type your idea here..." required>
         </div>
 		
+        <!-- Girl Suggestion Field (REQUIRED) -->
         <div class="section">
-            <label for="girl-suggestion">Have another girl name in mind? (Easy to pronounce, please!)</label>
-            <input type="text" name="entry.1558740965" id="girl-suggestion" placeholder="Type your idea here...">
+            <label for="girl-suggestion">Have another girl name in mind? (Easy to pronounce, please! 🗣️)</label>
+            <input type="text" name="entry.1558740965" id="girl-suggestion" placeholder="Type your idea here..." required>
         </div>
 
-        <button type="submit">Submit My Guess! 🧿</button>
+        <button type="submit">Submit My Guess! 🗳️🧿✨</button>
     </form>
 </div>
 
