@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baby Poll & Gender Reveal Guessing Game</title>
+    <style>
+        :root {
+            --pink: #ffb6c1;
+            --blue: #a8d8ea;
+            --text: #4a4a4a;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fef6fb 0%, #e6f4f8 100%);
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 { margin-bottom: 5px; color: #6c5ce7; }
+        p { color: #888; margin-bottom: 30px; }
+        .section { margin-bottom: 25px; text-align: left; }
+        label { font-weight: bold; display: block; margin-bottom: 8px; }
+        
+        /* Gender Selection Styling */
+        .gender-options {
+            display: flex;
+            gap: 15px;
+        }
+        .gender-btn {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            cursor: pointer;
+            text-align: center;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .gender-btn.boy:hover { border-color: var(--blue); background: #f0f8ff; }
+        .gender-btn.girl:hover { border-color: var(--pink); background: #fff5f7; }
+        
+        input[type="radio"] { display: none; }
+        input[type="radio"]:checked + .gender-btn.boy { background: var(--blue); border-color: #74b9ff; color: white; }
+        input[type="radio"]:checked + .gender-btn.girl { background: var(--pink); border-color: #ff7675; color: white; }
+
+        /* Inputs & Selects */
+        select, input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #eee;
+            border-radius: 10px;
+            box-sizing: border-box;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        select:focus, input[type="text"]:focus { border-color: #6c5ce7; }
+        
+        button[type="submit"] {
+            background: #6c5ce7;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
+            transition: transform 0.2s, background 0.3s;
+        }
+        button[type="submit"]:hover { background: #5b4cc4; transform: translateY(-2px); }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Baby Prediction Poll! 👶</h1>
+    <p>Cast your vote and help us guess the gender and names!</p>
+
+    <form action="YOUR_GOOGLE_FORM_ACTION_URL" method="POST" target="_self">
+        
+        <div class="section">
+            <label>What's your guess?</label>
+            <div class="gender-options">
+                <label style="flex:1;">
+                    <input type="radio" name="entry.FIRST_ENTRY_ID" value="Boy" required>
+                    <div class="gender-btn boy">💙 Boy</div>
+                </label>
+                <label style="flex:1;">
+                    <input type="radio" name="entry.FIRST_ENTRY_ID" value="Girl" required>
+                    <div class="gender-btn girl">💖 Girl</div>
+                </label>
+            </div>
+        </div>
+
+        <div class="section">
+            <label for="boy-name">If it's a Boy, which name do you prefer?</label>
+            <select name="entry.SECOND_ENTRY_ID" id="boy-name" required>
+                <option value="" disabled selected>Select a boy name</option>
+                <option value="Liam">Liam</option>
+                <option value="Oliver">Oliver</option>
+                <option value="Noah">Noah</option>
+                <option value="Ethan">Ethan</option>
+            </select>
+        </div>
+
+        <div class="section">
+            <label for="girl-name">If it's a Girl, which name do you prefer?</label>
+            <select name="entry.THIRD_ENTRY_ID" id="girl-name" required>
+                <option value="" disabled selected>Select a girl name</option>
+                <option value="Olivia">Olivia</option>
+                <option value="Emma">Emma</option>
+                <option value="Charlotte">Charlotte</option>
+                <option value="Amelia">Amelia</option>
+            </select>
+        </div>
+
+        <div class="section">
+            <label for="suggestion">Have another name suggestion?</label>
+            <input type="text" name="entry.FOURTH_ENTRY_ID" id="suggestion" placeholder="Type your idea here...">
+        </div>
+
+        <button type="submit">Submit My Guess! ✨</button>
+    </form>
+</div>
+
+</body>
+</html>
