@@ -3,39 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Baby Guessing Game Central 👶✨</title>
+    <title>Baby Poll & Gender Reveal Guessing Game</title>
     <style>
         :root {
-            --pink-light: #fff5f7;
-            --pink-main: #ff7675;
-            --pink-accent: #ffb6c1;
-            --blue-light: #f0f8ff;
-            --blue-main: #74b9ff;
-            --blue-accent: #a8d8ea;
-            --purple-main: #6c5ce7;
-            --text-dark: #2d3436;
-            --text-muted: #636e72;
-            --bg-gradient: linear-gradient(135deg, #ffeaa7 0%, #f1f2f6 50%, #a8d8ea 100%);
+            --pink: #ffb6c1;
+            --blue: #a8d8ea;
+            --text: #4a4a4a;
         }
-
         body {
-            font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, sans-serif;
-            background: var(--bg-gradient);
-            color: var(--text-dark);
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fef6fb 0%, #e6f4f8 100%);
+            color: var(--text);
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow-x: hidden;
-            position: relative;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
         }
-
-        /* Floating Confetti Graphics Background via CSS */
-        body::before {
-            content: "🍼  🎈  🧸  ✨  🍼  🎉  👟  🍭";
-            position: absolute;
-            font-size: 24px;
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            max-width: 500px;
             width: 100%;
-            text
+            text-align: center;
+        }
+        h1 { margin-bottom: 5px; color: #6c5ce7; }
+        p { color: #888; margin-bottom: 30px; }
+        .section { margin-bottom: 25px; text-align: left; }
+        label { font-weight: bold; display: block; margin-bottom: 8px; }
+        
+        /* Gender Selection Styling */
+        .gender-options {
+            display: flex;
+            gap: 15px;
+        }
+        .gender-btn {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            cursor: pointer;
+            text-align: center;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .gender-btn.boy:hover { border-color: var(--blue); background: #f0f8ff; }
+        .gender-btn.girl:hover { border-color: var(--pink); background: #fff5f7; }
+        
+        input[type="radio"] { display: none; }
+        input[type="radio"]:checked + .gender-btn.boy { background: var(--blue); border-color: #74b9ff; color: white; }
+        input[type="radio"]:checked + .gender-btn.girl { background: var(--pink); border-color: #ff7675; color: white; }
+
+        /* Inputs & Selects */
+        select, input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #eee;
+            border-radius: 10px;
+            box-sizing: border-box;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        select:focus, input[type="text"]:focus { border-color: #6c5ce7; }
+        
+        button[type="submit"] {
+            background: #6c5ce7;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
+            transition: transform 0.2s, background 0.3s;
+        }
+        button[type="submit"]:hover { background: #5b4cc4; transform: translateY(-2px); }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Baby Prediction Poll! 👶</h1>
+    <p>Cast your vote and help us guess the gender and names!</p>
+
+    <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSckfnJTUBhkDYrLKBVfUFQ3ersx7TqA3jUV70iPFL6kemRskg/formResponse" method="POST" target="_self">
+        
+        <div class="section">
+            <label>What's your guess?</label>
+            <div class="gender-options">
+                <label style="flex:1;">
+                    <input type="radio" name="entry.1062569499" value="Boy" required>
+                    <div class="gender-btn boy">💙 Boy</div>
+                </label>
+                <label style="flex:1;">
+                    <input type="radio" name="entry.1062569499" value="Girl" required>
+                    <div class="gender-btn girl">💖 Girl</div>
+                </label>
+            </div>
+        </div>
+
+        <div class="section">
+            <label for="boy-name">If it's a Boy, which name do you prefer?</label>
+            <select name="entry.1945235515" id="boy-name" required>
+                <option value="" disabled selected>Select a boy name</option>
+                <option value="Ishan">Ishan</option>
+                <option value="Ashish">Ashish</option>
+                <option value="Ryaan">Ryaan</option>
+            </select>
+        </div>
+
+        <div class="section">
+            <label for="girl-name">If it's a Girl, which name do you prefer?</label>
+            <select name="entry.820457992" id="girl-name" required>
+                <option value="" disabled selected>Select a girl name</option>
+                <option value="Isha">Isha</option>
+                <option value="Prisha">Prisha</option>
+                <option value="Swara">Swara</option>
+            </select>
+        </div>
+
+        <div class="section">
+            <label for="suggestion">Have another name suggestion?</label>
+            <input type="text" name="entry.730342018" id="suggestion" placeholder="Type your idea here..." required>
+        </div>
+
+        <button type="submit">Submit My Guess! ✨</button>
+    </form>
+</div>
+
+</body>
+</html>
