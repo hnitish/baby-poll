@@ -89,29 +89,29 @@
 <body>
 
 <div class="container">
-    <h1>Baby Prediction Poll! 👶</h1>
-    <p>Cast your vote and help us guess the gender and names!</p>
+    <h1>Baby Prediction Poll! 👶🏽</h1>
+    <p>Cast your vote and help us settle the family debates!</p>
 
     <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSckfnJTUBhkDYrLKBVfUFQ3ersx7TqA3jUV70iPFL6kemRskg/formResponse" method="POST" target="_self">
         
         <div class="section">
-            <label>What's your guess?</label>
+            <label>What is your final guess?</label>
             <div class="gender-options">
                 <label style="flex:1;">
                     <input type="radio" name="entry.1062569499" value="Boy" required>
-                    <div class="gender-btn boy">💙 Boy</div>
+                    <div class="gender-btn boy">💙 Team Boy</div>
                 </label>
                 <label style="flex:1;">
                     <input type="radio" name="entry.1062569499" value="Girl" required>
-                    <div class="gender-btn girl">💖 Girl</div>
+                    <div class="gender-btn girl">💖 Team Girl</div>
                 </label>
             </div>
         </div>
 
         <div class="section">
-            <label for="boy-name">If it's a Boy, which name do you prefer?</label>
+            <label for="boy-name">If it's a boy, which name gets your vote?</label>
             <select name="entry.1945235515" id="boy-name" required>
-                <option value="" disabled selected>Select a boy name</option>
+                <option value="" disabled selected>Select a name for the Chotu</option>
                 <option value="Ishan">Ishan</option>
                 <option value="Ashish">Ashish</option>
                 <option value="Ryaan">Ryaan</option>
@@ -119,9 +119,9 @@
         </div>
 
         <div class="section">
-            <label for="girl-name">If it's a Girl, which name do you prefer?</label>
+            <label for="girl-name">If it's a girl, which name gets your vote?</label>
             <select name="entry.820457992" id="girl-name" required>
-                <option value="" disabled selected>Select a girl name</option>
+                <option value="" disabled selected>Select a name for the Gudiya</option>
                 <option value="Isha">Isha</option>
                 <option value="Prisha">Prisha</option>
                 <option value="Swara">Swara</option>
@@ -129,11 +129,16 @@
         </div>
 
         <div class="section">
-            <label for="suggestion">Have another name suggestion?</label>
-            <input type="text" name="entry.730342018" id="suggestion" placeholder="Type your idea here..." required>
+            <label for="boy-suggestion">Have another boy name in mind? (Before the elders decide one!)</label>
+            <input type="text" name="entry.730342018" id="boy-suggestion" placeholder="Type your idea here..." required>
+        </div>
+		
+        <div class="section">
+            <label for="girl-suggestion">Have another girl name in mind? (Easy to pronounce, please!)</label>
+            <input type="text" name="entry.1558740965" id="girl-suggestion" placeholder="Type your idea here..." required>
         </div>
 
-        <button type="submit">Submit My Guess! ✨</button>
+        <button type="submit">Submit My Guess! 🧿</button>
     </form>
 </div>
 
