@@ -15,6 +15,7 @@
             --blue: #a8d8ea;
             --text: #4a4a4a;
             --purple: #6c5ce7;
+            --green: #2ecc71;
         }
         body {
             font-family: 'Quicksand', sans-serif;
@@ -42,6 +43,8 @@
             width: 100%;
             text-align: center;
             box-sizing: border-box;
+            position: relative;
+            overflow: hidden;
         }
         h1 { 
             font-family: 'Fredoka', sans-serif;
@@ -139,74 +142,118 @@
         }
         button[type="submit"]:hover { background: #5b4cc4; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(108, 92, 231, 0.35); }
         button[type="submit"]:active { transform: translateY(0); }
+
+        /* Hidden Frame Trick */
+        #hidden_iframe {
+            display: none;
+        }
+
+        /* Thank You Screen Styles */
+        #success-message {
+            display: none; /* Hidden by default */
+            animation: fadeIn 0.6s ease forwards;
+        }
+        .success-icon {
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: bounce 2s infinite ease-in-out;
+        }
+        .success-title {
+            font-family: 'Fredoka', sans-serif;
+            color: var(--purple);
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+        .success-text {
+            font-size: 1.15rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>Baby Prediction Poll! 👶🏻</h1>
-    <p>Cast your vote and help us settle the family debates! 📢💭</p>
+    <!-- The main poll container that will hide upon click -->
+    <div id="poll-content">
+        <h1>Baby Prediction Poll! 👶🏻</h1>
+        <p>Cast your vote and help us settle the family debates! 📢💭</p>
 
-    <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSckfnJTUBhkDYrLKBVfUFQ3ersx7TqA3jUV70iPFL6kemRskg/formResponse" method="POST" target="_self">
-        
-        <!-- Voter Identity Field (OPTIONAL) -->
-        <div class="section">
-            <label for="voter-name">Who is guessing? 📝</label>
-            <input type="text" name="entry.1344783608" id="voter-name" placeholder="Type your name here..." required>
-        </div>
-
-        <!-- Guess Field (REQUIRED) -->
-        <div class="section">
-            <label>What is your final guess? 🔮✨</label>
-            <div class="gender-options">
-                <label style="flex:1;">
-                    <input type="radio" name="entry.1062569499" value="Boy" required>
-                    <div class="gender-btn boy">💙 Team Boy 👦🏻 🍼</div>
-                </label>
-                <label style="flex:1;">
-                    <input type="radio" name="entry.1062569499" value="Girl" required>
-                    <div class="gender-btn girl">💖 Team Girl 👧🏻 🍼</div>
-                </label>
+        <!-- Form target points to the hidden iframe below -->
+        <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSckfnJTUBhkDYrLKBVfUFQ3ersx7TqA3jUV70iPFL6kemRskg/formResponse" 
+              method="POST" 
+              target="hidden_iframe" 
+              onsubmit="showThankYouMessage();">
+            
+            <!-- Voter Identity Field -->
+            <div class="section">
+                <label for="voter-name">Who is guessing? 📝</label>
+                <input type="text" name="entry.1344783608" id="voter-name" placeholder="Type your name here..." required>
             </div>
-        </div>
 
-        <!-- Boy Name Field (REQUIRED) -->
-       <!-- <div class="section">
-            <label for="boy-name">If it's a boy, which name gets your vote? 👑</label>
-            <select name="entry.1945235515" id="boy-name" required>
-                <option value="" disabled selected>Select a name for the Chotu...</option>
-                <option value="Reyansh">Reyansh</option>
-                <option value="Ashish">Ashish</option>
-                <option value="Ishan">Ishan</option>
-            </select>
-        </div> -->
+            <!-- Guess Field -->
+            <div class="section">
+                <label>What is your final guess? 🔮✨</label>
+                <div class="gender-options">
+                    <label style="flex:1;">
+                        <input type="radio" name="entry.1062569499" value="Boy" required>
+                        <div class="gender-btn boy">💙 Team Boy 👦🏻 🍼</div>
+                    </label>
+                    <label style="flex:1;">
+                        <input type="radio" name="entry.1062569499" value="Girl" required>
+                        <div class="gender-btn girl">💖 Team Girl 👧🏻 🍼</div>
+                    </label>
+                </div>
+            </div>
 
-        <!-- Girl Name Field (REQUIRED) -->
-      <!-- <div class="section">
-            <label for="girl-name">If it's a girl, which name gets your vote? 🎀</label>
-            <select name="entry.820457992" id="girl-name" required>
-                <option value="" disabled selected>Select a name for the Gudiya...</option>
-                <option value="Prisha">Prisha</option>
-                <option value="Ira">Ira</option>
-                <option value="Isha">Isha</option>
-            </select>
-        </div> -->
+            <!-- Boy Suggestion Field -->
+            <div class="section">
+                <label for="boy-suggestion">Have a boy name in mind? (Before the elders decide! 👴🏽)</label>
+                <input type="text" name="entry.730342018" id="boy-suggestion" placeholder="Type your idea here..." >
+            </div>
+            
+            <!-- Girl Suggestion Field -->
+            <div class="section">
+                <label for="girl-suggestion">Have a girl name in mind? (Easy to pronounce, please! 🗣️)</label>
+                <input type="text" name="entry.1558740965" id="girl-suggestion" placeholder="Type your idea here..." >
+            </div>
 
-        <!-- Boy Suggestion Field (REQUIRED) -->
-        <div class="section">
-            <label for="boy-suggestion">Have a boy name in mind? (Before the elders decide! 👴🏽)</label>
-            <input type="text" name="entry.730342018" id="boy-suggestion" placeholder="Type your idea here..." >
-        </div>
-		
-        <!-- Girl Suggestion Field (REQUIRED) -->
-        <div class="section">
-            <label for="girl-suggestion">Have a girl name in mind? (Easy to pronounce, please! 🗣️)</label>
-            <input type="text" name="entry.1558740965" id="girl-suggestion" placeholder="Type your idea here..." >
-        </div>
+            <button type="submit">Submit My Guess! 🗳️🧿✨</button>
+        </form>
+    </div>
 
-        <button type="submit">Submit My Guess! 🗳️🧿✨</button>
-    </form>
+    <!-- This custom screen shows instantly when the submit button is clicked -->
+    <div id="success-message">
+        <div class="success-icon">🧿✨👶🏻</div>
+        <h2 class="success-title">Guess Registered!</h2>
+        <p class="success-text">
+            Thank you so much for locks-in your prediction! Your answers have been saved safely. <br><br>
+            Let's see if it turns out to be a charming <strong>Chotu</strong> or a sweet <strong>Gudiya</strong>!🩵🩷
+        </p>
+    </div>
 </div>
+
+<!-- The secret hidden gateway that absorbs Google Form's redirect -->
+<iframe name="hidden_iframe" id="hidden_iframe"></iframe>
+
+<script>
+    function showThankYouMessage() {
+        // Instantly hide the form components
+        document.getElementById('poll-content').style.display = 'none';
+        // Instantly display our elegant, integrated thank-you block
+        document.getElementById('success-message').style.display = 'block';
+    }
+</script>
 
 </body>
 </html>
